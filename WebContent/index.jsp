@@ -7,11 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<p>Conversor de Medidas</p>
 	<form method="post" action="/ConversorMedidas/Resposta">
-		Cm:<br> <input type="text" name="entrada">
+		Centímetros:<br> <input type="text" name="entrada">
 		<br>
 		
-		Pol:<br>
+		Polegadas:<br>
 		<input type="text" value="${convert.saida}" name="saida" disabled="disabled">
 		<br>
 		<br> <input type="submit" value="Converter">
