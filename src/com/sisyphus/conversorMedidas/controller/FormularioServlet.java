@@ -30,20 +30,19 @@ public class FormularioServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ConverterMedidasCm convert = new ConverterMedidasCm();
-		String ent = request.getParameter("entrada");
-		PrintWriter out = response.getWriter();
+		ConverterMedidasCm converterCm = new ConverterMedidasCm();
 		
-		out.print("<html><head><title>Resposta do Servidor</title></head><body>");
-		out.print("<h1>"+convert.converterCmParaPolegadas(Double.parseDouble(ent))+"</h1>");
-		out.print("</body></html>");
+		converterCm.setEntrada(Double.parseDouble(request.getParameter("entrada")));
+		converterCm.setSaida(converterCm.converterCmParaPolegadas(converterCm.getEntrada()));
+		
+		request.setAttribute("convert", converterCm);
+	    request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
